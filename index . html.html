@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Manasa 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    color: white;
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 20px;
+    animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+.container {
+    background: rgba(255,255,255,0.15);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(255,255,255,0.6);
+    max-width: 700px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 22px;
+    min-height: 80px;
+    transition: 0.3s;
+}
+
+button {
+    margin: 15px;
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background: #ff2e63;
+    color: white;
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
+}
+
+#noBtn {
+    background: #444;
+    color: white;
+    position: relative;
+}
+
+.finalMessage {
+    font-size: 22px;
+    margin-top: 20px;
+    font-weight: bold;
+    display: none;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff; }
+    to { text-shadow: 0 0 25px #fff; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Oyyy Pellama 💖</h1>
+
+    <div class="message" id="loveMessage">
+        You are my Valentine??🌹
+    </div>
+
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 😢</button>
+
+    <div class="finalMessage" id="finalMessage"></div>
+</div>
+
+<audio autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const loveMessage = document.getElementById("loveMessage");
+const finalMessage = document.getElementById("finalMessage");
+
+const messages = [
+    "Fights are temporary… but our love is permanent ❤️🔥",
+    "I proudly say I got the most supportive girl… it's YOU 💪💖",
+    "This Valentine is special… now it's You, Me & Our Tiny Angel 👨‍👩‍👧💕",
+    "You make every day beautiful and bright ☀️✨",
+    "Our baby girl is lucky to have you as her mother 👶🌸",
+    "Your hugs are my safest place 🤗❤️",
+    "Your smile is my happiness 😍💞"
+];
+
+let clickCount = 0;
+
+/* Move NO button playfully */
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+/* On NO click show next love message */
+noBtn.addEventListener("click", function() {
+    loveMessage.innerText = messages[clickCount % messages.length];
+    clickCount++;
+});
+
+/* YES button final emotional message */
+yesBtn.addEventListener("click", function() {
+
+    loveMessage.style.display = "none";
+    noBtn.style.display = "none";
+    yesBtn.style.display = "none";
+
+    finalMessage.style.display = "block";
+    finalMessage.innerHTML = `
+        Heyyy❤️<br><br>
+        You are not just my Valentine…<br>
+        You are my life 💖<br><br>
+        You are the reason I smile 😊<br>
+        You are my strength 💪<br>
+        You are the best mother to our beautiful baby girl 👶💕<br><br>
+        Without you, I am nothing…<br>
+        With you, I have everything 🌍❤️<br><br>
+        I love you 💖....forvere and ever....💞✨
+        Happy Valentines day Pondati💞..and you are my valentine forever...❤️
+    `;
+});
+
+/* Floating hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
